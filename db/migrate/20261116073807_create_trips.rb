@@ -1,7 +1,8 @@
 class CreateTrips < ActiveRecord::Migration[8.1]
   def change
     create_table :trips do |t|
-      t.string :location
+      t.references :place, foreign_key: true
+      t.references :user, foreign_key: true
       t.date :date
       t.text :plan
 
