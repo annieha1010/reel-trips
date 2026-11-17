@@ -19,6 +19,10 @@ class TripsController < ApplicationController
     # TODO: update the show page
   end
 
+  def index
+    @trips = Trip.all
+  end
+
   private
 
   def trip_params
