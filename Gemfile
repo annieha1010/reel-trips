@@ -73,3 +73,5 @@ group :test do
 end
 
 gem "devise"
+gem "dotenv"
+gem "ruby_llm"
