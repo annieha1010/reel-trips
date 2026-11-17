@@ -22,7 +22,11 @@ class TripsController < ApplicationController
   end
 
   def show
-    # TODO: update the show page
+    @trip = Trip.find(params[:id])
+  end
+
+  def index
+    @trips = Trip.all
   end
 
   private

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="header">
+    <h1>Trips</h1>
+  </div>
+  <div class="cards">
+    <% @trips.each do |trip| %>
+      <div class="card-trip">
+        <%= image_tag "https://jw-webmagazine.com/wp-content/uploads/2019/06/jw-5d15f00c397be8.14350787.jpeg", alt: "for now" %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%=  trip.place.name  %></h2>
+            <p>Short description here!</p>
+          </div>
+        </div>
+        <%= link_to "", trip_path(trip), class: "position-absolute top-0 bottom-0 w-100" %>
+      </div>
+    <% end %>
+  </div>
+</div>
