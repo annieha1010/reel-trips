@@ -4,12 +4,8 @@ class TripsController < ApplicationController
   end
 
   def create
-    # raise
-
-    # @place = Place.find(trip_params[:place_id])
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-    # Need to create @trip.plan
     response = generate_plan
     @trip.plan = response.content
     if @trip.save
