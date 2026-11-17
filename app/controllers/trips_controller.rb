@@ -7,13 +7,11 @@ class TripsController < ApplicationController
     # raise
 
     # @place = Place.find(trip_params[:place_id])
-    @user = User.find(5) # refracter to get the current_user
     @trip = Trip.new(trip_params)
-    @trip.user = @user
+    @trip.user = current_user
     # Need to create @trip.plan
     response = generate_plan
     @trip.plan = response.content
-    raise
     if @trip.save
       redirect_to trip_path(@trip)
     else
