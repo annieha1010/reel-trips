@@ -4,10 +4,14 @@ class TripsController < ApplicationController
   end
 
   def create
+    # raise
+
     # @place = Place.find(trip_params[:place_id])
-    @user = User.find(5) # refracter to get the current_user
     @trip = Trip.new(trip_params)
-    @trip.user = @user
+    @trip.user = current_user
+    # Need to create @trip.plan
+    response = generate_plan
+    @trip.plan = response.content
     if @trip.save
       redirect_to trip_path(@trip)
     else
@@ -24,6 +28,12 @@ class TripsController < ApplicationController
   end
 
   private
+
+  def generate_plan
+    rubyllm_chat = RubyLLM.chat(model: 'gpt-4.1')
+    rubyllm_chat.with_instructions(Trip.system_prompt)
+    rubyllm_chat.ask("Create an itinerary for the following location: #{@trip.place.name} and date: #{@trip.date}")
+  end
 
   def trip_params
     params.require(:trip).permit(:date, :place_id)
