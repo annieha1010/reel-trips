@@ -1,0 +1,5 @@
+<%= simple_form_for @trip do |f| %>
+  <%= f.input :date, html5: true %>
+  <%= f.association :place %>
+  <%= f.submit 'Search', class: 'btn btn-info mt-2' %>
+<% end %>
