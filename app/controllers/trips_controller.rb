@@ -17,6 +17,21 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+
+    @place = @trip.place
+
+    if @place&.latitude.present? && @place&.longitude.present?
+      @markers = [
+        {
+          lat: @place.latitude,
+          lng: @place.longitude
+          # each of your markers will display a info window when clicked
+          # info_window_html: render_to_string(partial: "/places/map_box", locals: { place: @place })
+        }
+      ]
+    else
+      @markers = []
+    end
   end
 
   def index
