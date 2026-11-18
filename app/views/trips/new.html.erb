@@ -1,5 +1,9 @@
 <%= simple_form_for @trip do |f| %>
   <%= f.input :date, html5: true %>
-  <%= f.association :place %>
+  <%= f.input :place_name,
+      collection: Place.order(:name).pluck(:name),
+      input_html: {
+        data: { controller: "tom-select" }
+      } %>
   <%= f.submit 'Search', class: 'btn btn-info mt-2' %>
 <% end %>
