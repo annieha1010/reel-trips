@@ -16,7 +16,11 @@
 </div>
 <div id="chat" class="">
   <div class="messages">
-  </div>
+    <div id="messages">
+    <% @messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+    </div>
   <div class="message-form">
     <%= render "messages/form" %>
   </div>
