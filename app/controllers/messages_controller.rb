@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
     @message.role = "user"
     if @message.save
       create_assistant_message
+      redirect_to trip_path(@trip)
     else
       render "trips/show", status: :unprocessable_entity
     end
