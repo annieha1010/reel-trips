@@ -25,13 +25,13 @@ puts "Finished! Created #{User.count} user(s)."
 
 place1 = Place.create!(
   name: "Lake Titicaca",
-  latitude: 15.794896,
-  longitude: 69.474792
+  latitude: -15.794896,
+  longitude: -69.474792
 )
 place2 = Place.create!(
   name: "Lake Ashinoko",
-  latitude: 35.18945,
-  longitude: 135.999264
+  latitude: 35.209944,
+  longitude: 139.012028
 )
 place3 = Place.create!(
   name: "Lake Biwako",
