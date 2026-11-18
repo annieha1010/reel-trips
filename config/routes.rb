@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   #I relocate the :destroy
   resources :trips, only: [ :new, :create, :index, :show, :destroy] do
-    resources :messages, only: [ :create]
+    resources :messages, only: [:create]
   end
 
 
