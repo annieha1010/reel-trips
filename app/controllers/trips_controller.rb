@@ -17,6 +17,8 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @messages = @trip.messages.order(:created_at)
+    @message = Message.new
   end
 
   def index
