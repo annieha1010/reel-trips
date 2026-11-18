@@ -1,1 +1,22 @@
-<h1>Welcome to Reel Trips</h1>
+<div class="landing-hero">
+  <div class="container">
+    <div class="row" align-items-center min-vh-75 py-5 >
+      <div class="col-lg-6" text-start pe-lg-5>
+        <span class= "badge-tag my-4"> AI Trip Planner</span>
+        <h1 class= "hero-title">
+          Reel <br>
+          <span>Trips</span>
+        </h1>
+        <p class = "hero-subtitle my-4" >
+          plan your next fishing adventure in seconds.
+        </p>
+        <div class="mt-4">
+          <%= link_to "Start your Trip", new_trip_path, class: "btn btn-reel-primary"  %>
+        </div>
+      </div>
+      <div class="col-lg-6 mt-5 mt-lg-0 text-center">
+        <%= image_tag "landing-page-pic.png" , alt: "Fishing picture", class: "img-fluid img-rounded" %>
+      </div>
+    </div>
+  </div>
+</div>
