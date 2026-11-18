@@ -4,6 +4,8 @@ class Trip < ApplicationRecord
   has_many :messages, dependent: :destroy
   validates :date, presence: true
 
+  attr_accessor :place_name
+
   def self.system_prompt
     "You are an expert fisherman well-versed in fishing spots in Japan.\n
     I am a sometimes a beginner/hobbyist looking for information regarding fishing spots in Japan.\n
