@@ -8,3 +8,6 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 pin "gmaps" # @0.4.25
+pin "tom-select", to: "https://cdn.jsdelivr.net/npm/tom-select@2.7.0/+esm"
+pin "@orchidjs/sifter", to: "@orchidjs--sifter.js" # @1.1.0
+pin "@orchidjs/unicode-variants", to: "@orchidjs--unicode-variants.js" # @1.2.2

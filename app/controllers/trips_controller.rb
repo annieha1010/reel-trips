@@ -6,8 +6,17 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-    response = generate_plan
-    @trip.plan = response.content
+
+    if @trip.place_name.present?
+      # TODO: does a place need other information filled in later on?
+      @trip.place = Place.find_or_create_by(name: @trip.place_name.strip)
+    end
+
+    if @trip.place.present?
+      response = generate_plan
+      @trip.plan = response.content
+    end
+
     if @trip.save
       redirect_to trip_path(@trip)
     else
@@ -17,7 +26,8 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-
+    @messages = @trip.messages.order(:created_at) # Load messages
+    @message = Message.new # Load new message for form
     @place = @trip.place
 
     if @place&.latitude.present? && @place&.longitude.present?
@@ -53,6 +63,6 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:date, :place_id)
+    params.require(:trip).permit(:date, :place_name)
   end
 end
