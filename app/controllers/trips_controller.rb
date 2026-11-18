@@ -31,6 +31,18 @@ class TripsController < ApplicationController
     @trips = Trip.all
   end
 
+  def update
+    @trip = Trip.find(params[:id])
+    if params[:trip][:new_plan].present?
+      update_plan
+    end
+    if @trip.update(trip_params)
+      redirect_to trip_path(@trip)
+    else
+      render "trips/show", status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @trip = Trip.find(params[:id])
     @trip.destroy
@@ -38,6 +50,17 @@ class TripsController < ApplicationController
   end
 
   private
+
+  def update_plan
+    rubyllm_chat = RubyLLM.chat(model: 'gpt-4.1')
+    # Provide update request
+
+    # Give system prompt
+    rubyllm_chat.with_instructions(Trip.edit_prompt + "Given the user's request, make the appropriate changes to the following Plan: '#{@trip.plan}'. Provide your response in markdown in the same format without any dressing around it. If the user does not specify something which may prompt a change, produce the same Plan that they already had")
+    response = rubyllm_chat.ask(params[:trip][:new_plan])
+    @trip.plan = response.content
+    @trip.save
+  end
 
   def generate_plan
     rubyllm_chat = RubyLLM.chat(model: 'gpt-4.1')
