@@ -6,12 +6,15 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
-    response = generate_plan
-    @trip.plan = response.content
 
     if @trip.place_name.present?
       # TODO: does a place need other information filled in later on?
       @trip.place = Place.find_or_create_by(name: @trip.place_name.strip)
+    end
+
+    if @trip.place.present?
+      response = generate_plan
+      @trip.plan = response.content
     end
 
     if @trip.save
