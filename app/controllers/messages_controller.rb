@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
       rubyllm_chat.add_message(role: message.role, content: message.content)
     end
     # Give system prompt
-    rubyllm_chat.with_instructions(Message.system_prompt + "Given the user's request, make the appropriate changes to the following Plan: '#{@trip.plan}'. Provide your response in markdown in the same format unless additional clarification is necessary to alter the user's Plan.")
+    rubyllm_chat.with_instructions(Message.system_prompt + "Given the user's request, make the appropriate changes to the following Plan: '#{@trip.plan}'. Provide your response in markdown in the same format without any dressing around it. If the user does not specify something which may prompt a change, produce the same Plan that they already had")
     response = rubyllm_chat.ask(@message.content)
     @ai_message = Message.create(
       role: "assistant",
