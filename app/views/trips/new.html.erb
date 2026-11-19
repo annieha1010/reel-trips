@@ -1,10 +1,8 @@
 <div class="container my-5">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-6">
-
+    <div class="col-12 col-md-8 col-lg-6 pro-card">
       <h1 class="text-center mb-4">Plan your trip</h1>
-
-      <div class="card p-4">
+      <div class="p-4">
         <%= simple_form_for @trip do |f| %>
           <%= f.input :date, html5: true %>
           <%= f.input :place_name,
@@ -31,12 +29,16 @@
                 label: "Keep or release?",
                 wrapper: :vertical_collection_inline %>
 
-          <%= f.submit "Plan my trip",
-                class: "btn btn-info w-100 mt-3",
-                data: { turbo_submits_with: "Planning your trip…" } %>
+          <div class="flex-box">
+            <div class="button">
+              <%= f.submit "Plan my trip",
+                  class: "button_top",
+                  data: { turbo_submits_with: "Planning your trip…" } %>
+            </div>
+          </div>
+
         <% end %>
       </div>
-
     </div>
   </div>
 </div>
