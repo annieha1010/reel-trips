@@ -17,18 +17,24 @@
   </div>
 </div>
 
-<div class="chat-panel">
-  <div id="chat">
-    <div id="messages">
-      <% @messages.each do |message| %>
-        <%= render "messages/message", message: message %>
-      <% end %>
+<div class="chat-panel" data-controller="chat-panel">
+  <button type="button" class="chat-panel-bar" data-action="click->chat-panel#toggle">
+    Make a change or ask a question
+  </button>
+
+  <div class="chat-panel-body">
+    <div id="chat">
+      <div id="messages">
+        <% @messages.each do |message| %>
+          <%= render "messages/message", message: message %>
+        <% end %>
+      </div>
+      <div id="new_message_container" class="message-form">
+        <%= render "messages/form" %>
+      </div>
     </div>
-    <div id="new_message_container" class="message-form">
-      <%= render "messages/form" %>
-    </div>
+    <%= render "trips/new_plan_form", trip: @trip %>
   </div>
-  <%= render "trips/new_plan_form", trip: @trip %>
 </div>
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
