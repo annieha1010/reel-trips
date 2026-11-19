@@ -6,9 +6,15 @@ class MessagesController < ApplicationController
     @message.role = "user"
     if @message.save
       create_assistant_message
-      redirect_to trip_path(@trip)
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to trip_path(@trip)}
+      end
     else
-      render "trips/show", status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.update()}
+        format.html { render "trips/show", status: :unprocessable_entity }
+      end
     end
   end
 
