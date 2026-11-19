@@ -5,11 +5,11 @@
   <div class="cards">
     <% @trips.each do |trip| %>
       <div class="card-trip">
-        <%= image_tag "https://jw-webmagazine.com/wp-content/uploads/2019/06/jw-5d15f00c397be8.14350787.jpeg", alt: "for now" %>
+        <%= image_tag (trip.image_url.presence || "no_photo.png"), alt: "trip.place.name", class: "card-img-top" %>
         <div class="card-trip-infos">
           <div>
             <h2><%=  trip.place.name  %></h2>
-            <p>Short description here!</p>
+            <p><%= trip.date %></p>
           </div>
         </div>
         <%= link_to "", trip_path(trip), class: "position-absolute top-0 bottom-0 w-100" %>
@@ -18,5 +18,6 @@
         <% end %>
       </div>
     <% end %>
+    <%= @image %>
   </div>
 </div>

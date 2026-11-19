@@ -25,13 +25,13 @@ puts "Finished! Created #{User.count} user(s)."
 
 place1 = Place.create!(
   name: "Lake Titicaca",
-  latitude: -15.794896,
-  longitude: -69.474792
+  latitude: 15.794896,
+  longitude: 69.474792
 )
 place2 = Place.create!(
   name: "Lake Ashinoko",
-  latitude: 35.209944,
-  longitude: 139.012028
+  latitude: 35.18945,
+  longitude: 135.999264
 )
 place3 = Place.create!(
   name: "Lake Biwako",
@@ -50,6 +50,8 @@ puts "Finished! Created #{Place.count} place(s)."
 
 trip1 = Trip.new(
   date: Date.today,
+  image_url: "https://www.peru-explorer.com/wp-content/uploads/top-attractions-at-lake-titicaca.jpg",
+
   plan: <<~MARKDOWN
     # Lake Titicaca High-Altitude Fishing Trip Plan
 
@@ -77,6 +79,7 @@ trip1 = Trip.new(
     - [ ] Reusable water bottle, snacks, and altitude sickness remedies
     - [ ] Dry bag for electronics and permits
   MARKDOWN
+
 )
 trip1.user = user_annie
 trip1.place = place1
@@ -85,6 +88,8 @@ trip1.save
 
 trip2 = Trip.new(
   date: Date.today,
+  image_url: "https://cdn.getyourguide.com/image/format=auto,fit=contain,gravity=auto,quality=60,width=1440,height=650,dpr=1/tour_img/ba9f22fdc945af52f7d2a3893f8bb4a2cf0e343c355d01353590ddfd12bf3918.png",
+
   plan: <<~MARKDOWN
     # Lake Ashi (Ashinoko) Trout & Black Bass Fishing Trip Plan
 
@@ -120,6 +125,7 @@ trip2.save
 
 trip3 = Trip.new(
   date: Date.today,
+  image_url: "https://assets.st-note.com/production/uploads/images/333260437/rectangle_large_type_2_9017354ce8d890674337eb5d4c17f86c.jpeg?fit=bounds&quality=85&width=1280",
   plan: <<~MARKDOWN
     # Lake Biwa (Biwako) Bass & Biwa Trout Fishing Trip Plan
 

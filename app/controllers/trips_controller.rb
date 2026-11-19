@@ -1,3 +1,6 @@
+require "open-uri"
+require "nokogiri"
+
 class TripsController < ApplicationController
   def new
     @trip = Trip.new
@@ -6,6 +9,26 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user
+
+    if @trip.place_name.present?
+      @trip.place = Place.find_or_create_by(name: @trip.place_name.strip)
+    end
+
+    if @trip.place.present?
+      response = generate_plan
+      @trip.plan = response.content
+    end
+
+    url = "https://commons.wikimedia.org/w/index.php?search=#{@trip.place.name}&title=Special%3AMediaSearch&type=image"
+
+    html_file = URI.parse(url).read
+    html_doc = Nokogiri::HTML.parse(html_file)
+    @link = html_doc.search(".sdms-image-result").attr("href")
+
+    link_file = URI.parse(@link).read
+    html_doc = Nokogiri::HTML.parse(link_file)
+    @image_url = html_doc.search("#file a img").attr("src")
+    @trip.image_url = @image_url
 
     if @trip.save
        response = generate_plan
@@ -43,9 +66,7 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
-    if params[:trip][:new_plan].present?
-      update_plan
-    end
+    update_plan if params[:trip][:new_plan].present?
     if @trip.update(trip_params)
       redirect_to trip_path(@trip)
     else
