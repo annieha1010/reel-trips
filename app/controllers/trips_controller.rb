@@ -14,11 +14,6 @@ class TripsController < ApplicationController
       @trip.place = Place.find_or_create_by(name: @trip.place_name.strip)
     end
 
-    if @trip.place.present?
-      response = generate_plan
-      @trip.plan = response.content
-    end
-
     url = "https://commons.wikimedia.org/w/index.php?search=#{@trip.place.name}&title=Special%3AMediaSearch&type=image"
 
     html_file = URI.parse(url).read
