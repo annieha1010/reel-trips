@@ -1,9 +1,42 @@
-<%= simple_form_for @trip do |f| %>
-  <%= f.input :date, html5: true %>
-  <%= f.input :place_name,
-      collection: Place.order(:name).pluck(:name),
-      input_html: {
-        data: { controller: "tom-select" }
-      } %>
-  <%= f.submit 'Search', class: 'btn btn-info mt-2' %>
-<% end %>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+      <h1 class="text-center mb-4">Plan your trip</h1>
+
+      <div class="card p-4">
+        <%= simple_form_for @trip do |f| %>
+          <%= f.input :date, html5: true %>
+          <%= f.input :place_name,
+              collection: Place.order(:name).pluck(:name),
+              input_html: {
+                data: { controller: "tom-select" }
+              } %>
+
+          <%= f.input :experience,
+                as: :radio_buttons,
+                collection: ["Beginner", "Intermediate", "I'm pro bro"],
+                label: "Experience level",
+                wrapper: :vertical_collection_inline %>
+
+          <%= f.input :fishing_style,
+                as: :radio_buttons,
+                collection: ["From the shore", "With a boat"],
+                label: "How will you fish?",
+                wrapper: :vertical_collection_inline %>
+
+          <%= f.input :catch_policy,
+                as: :radio_buttons,
+                collection: ["Keep", "Release"],
+                label: "Keep or release?",
+                wrapper: :vertical_collection_inline %>
+
+          <%= f.submit "Plan my trip",
+                class: "btn btn-info w-100 mt-3",
+                data: { turbo_submits_with: "Planning your trip…" } %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,14 +1,14 @@
 <h1 class="text-center"><%= @trip.place.name %></h1>
 <p class="text-muted text-center"><%= @trip.date %></p>
 <div class="px-3 pb-3">
-  <div class="row">
-    <div id="trip" class="col-6">
+  <div class="row g-3">
+    <div id="trip" class="col-12 col-md-6 order-2 order-md-1">
       <div class="card p-4">
         <%= markdown(@trip.plan) %>
       </div>
     </div>
-    <div class="col-6">
-      <div id="map" style="height: 80vh;"
+    <div class="col-12 col-md-6 order-1 order-md-2">
+      <div id="map" class="trip-map"
         data-controller="google-maps"
         data-google-maps-markers-value="<%= @markers.to_json %>"
         >
@@ -16,17 +16,24 @@
     </div>
   </div>
 </div>
-<%= render "trips/new_plan_form", trip: @trip %>
-<div id="chat" class="">
-  <div class="messages">
-    <div id="messages">
-      <% @messages.each do |message| %>
-        <%= render "messages/message", message: message %>
-      <% end %>
+
+<div class="chat-panel" data-controller="chat-panel">
+  <button type="button" class="chat-panel-bar" data-action="click->chat-panel#toggle">
+    Make a change or ask a question
+  </button>
+
+  <div class="chat-panel-body">
+    <div id="chat">
+      <div id="messages">
+        <% @messages.each do |message| %>
+          <%= render "messages/message", message: message %>
+        <% end %>
+      </div>
+      <div id="new_message_container" class="message-form">
+        <%= render "messages/form" %>
+      </div>
     </div>
-    <div class="message-form">
-      <%= render "messages/form" %>
-    </div>
+    <%= render "trips/new_plan_form", trip: @trip %>
   </div>
 </div>
 

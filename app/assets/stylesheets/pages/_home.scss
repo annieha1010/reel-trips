@@ -1,1 +1,44 @@
 // Specific CSS for your home-page
+.landing-hero {
+  background: #AEEED3;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 25px;
+
+}
+
+.badge-tag {
+  display: inline-block;
+  background-color: #cbe9e2;
+  color: #267363;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.hero-title {
+  font-size: 60px;
+  font-weight: bold;
+  color: darkblue
+
+  span{
+    color: 526d67;
+  }
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: white;
+}
+
+.btn {
+  background-color: #3da58e;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+}
+
+.img-rounded{
+  width: 100%;
+  border-radius: 15px;
+}
