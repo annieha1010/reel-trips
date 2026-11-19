@@ -1,0 +1,48 @@
+// overwriting tom select in the form input
+.ts-control {
+  border: none;
+
+}
+
+.ts-wrapper.single .ts-control {
+  background-image: none;
+  background-color: $light-gray;
+  box-shadow: none;
+  color: black;
+}
+
+.form-select {
+  border-radius: 10px;
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+}
+
+.ts-control {
+  padding: 0;
+}
+
+.ts-control, .ts-wrapper.single.input-active .ts-control {
+  background-color: $light-gray;
+}
+
+.ts-control, .ts-control input, .ts-dropdown {
+  font-size: 1rem;
+}
+
+.ts-wrapper.single.dropdown-active .ts-control:after {
+  border-color: transparent transparent $blue;
+}
+
+.ts-wrapper.single .ts-control:not(.rtl):after {
+  right: 7px;
+}
+
+// for container of button
+.flex-box {
+  display: flex;
+  justify-content: center;
+}
+
+// Form labels
+.form-label, .col-form-label {
+  font-weight: bold;
+}

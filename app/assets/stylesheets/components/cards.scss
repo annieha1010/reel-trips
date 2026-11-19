@@ -1,8 +1,8 @@
-
 .card-trip {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 30px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   position: relative;
 }
 
@@ -24,7 +24,6 @@
   margin: 0;
 }
 
-
 .card-trip .card-trip-infos {
   padding: 16px;
   display: flex;
@@ -39,8 +38,6 @@
   top: -20px;
   width: 40px;
 }
-
-
 
 .cards {
   display: grid;

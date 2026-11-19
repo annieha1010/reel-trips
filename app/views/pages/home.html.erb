@@ -1,17 +1,18 @@
 <div class="landing-hero">
   <div class="container">
-    <div class="row" align-items-center min-vh-75 py-5 >
+    <div class="row gradient-bg min-vh-75 py-5">
       <div class="col-lg-6" text-start pe-lg-5>
-        <span class= "badge-tag my-4"> AI Trip Planner</span>
+        <span class= "badge-tag my-4"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Trip Planner</span>
         <h1 class= "hero-title">
-          Reel <br>
-          <span>Trips</span>
+          Reel <span>Trips</span>
         </h1>
         <p class = "hero-subtitle my-4" >
-          plan your next fishing adventure in seconds.
+          Plan your next fishing adventure in seconds with smart weather, lunar tables & spot insights.
         </p>
-        <div class="mt-4">
-          <%= link_to "Start your Trip", new_trip_path, class: "btn btn-reel-primary"  %>
+        <div class="button">
+          <%= link_to new_trip_path , class:"button_top" do %>
+          Start your Trip
+          <% end %>
         </div>
       </div>
       <div class="col-lg-6 mt-5 mt-lg-0 text-center">
