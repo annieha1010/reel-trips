@@ -6,6 +6,12 @@ class Trip < ApplicationRecord
 
   attr_accessor :place_name, :new_plan
 
+  # DELETE ME LATER!!!!!!!!!!!!!!!!!!!!
+  # These are form-only for now.
+  # Values aren’t saved, because they aren’t in trip_params.
+  # When we have real columns delete this line.
+  attr_accessor :experience, :fishing_style, :catch_policy
+
   def self.system_prompt
     "You are an expert fisherman well-versed in fishing spots in Japan.\n
     I am a sometimes a beginner/hobbyist looking for information regarding fishing spots in Japan.\n
