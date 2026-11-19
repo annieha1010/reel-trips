@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-
   def create
     @trip = Trip.find(params[:trip_id])
     @message = Message.new(message_params)
@@ -15,6 +14,9 @@ class MessagesController < ApplicationController
 
   def create_assistant_message
     rubyllm_chat = RubyLLM.chat(model: 'gpt-4.1')
+    #  @trip = Trip.find(params[:trip_id])
+    modify_plan_tool = ModifyPlanTool.new(@trip)
+    rubyllm_chat.with_tools(modify_plan_tool)
     # Provide chat history
     @trip.messages.each do |message|
       rubyllm_chat.add_message(role: message.role, content: message.content)
