@@ -7,17 +7,10 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     @trip.user = current_user
 
-    if @trip.place_name.present?
-      # TODO: does a place need other information filled in later on?
-      @trip.place = Place.find_or_create_by(name: @trip.place_name.strip)
-    end
-
-    if @trip.place.present?
-      response = generate_plan
-      @trip.plan = response.content
-    end
-
     if @trip.save
+       response = generate_plan
+       @trip.plan = response.content
+       @trip.save
       redirect_to trip_path(@trip)
     else
       render "new", status: :unprocessable_entity
@@ -45,7 +38,7 @@ class TripsController < ApplicationController
   end
 
   def index
-    @trips = Trip.all
+    @trips = current_user.trips.where.not(place: nil)
   end
 
   def update
@@ -81,8 +74,9 @@ class TripsController < ApplicationController
 
   def generate_plan
     rubyllm_chat = RubyLLM.chat(model: 'gpt-4.1')
+    rubyllm_chat.with_tools(CreatePlaceTool)
     rubyllm_chat.with_instructions(Trip.system_prompt)
-    rubyllm_chat.ask("Create an itinerary for the following location: #{@trip.place.name} and date: #{@trip.date}")
+    rubyllm_chat.ask("User input: #{params[:trip][:place_name]}. This is the `trip_id`: #{@trip.id}. Once the CreatePlaceTool provides you a `place_id`, then Create an itinerary for that location and date: #{@trip.date}")
   end
 
   def trip_params
