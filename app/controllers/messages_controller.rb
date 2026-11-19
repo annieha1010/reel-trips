@@ -5,14 +5,14 @@ class MessagesController < ApplicationController
     @message.trip = @trip
     @message.role = "user"
     if @message.save
-      create_assistant_message
+      @assistant_message = create_assistant_message
       respond_to do |format|
         format.turbo_stream
         format.html { redirect_to trip_path(@trip)}
       end
     else
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.update()}
+        format.turbo_stream { render turbo_stream: turbo_stream.update("new_message_container", partial: "messages/form", locals: { trip: @trip, message: @message})}
         format.html { render "trips/show", status: :unprocessable_entity }
       end
     end
