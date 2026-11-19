@@ -81,6 +81,7 @@ class TripsController < ApplicationController
 
   def generate_plan
     rubyllm_chat = RubyLLM.chat(model: 'gpt-4.1')
+    ruby_llm_chat.with_tool(CreatePlaceTool)
     rubyllm_chat.with_instructions(Trip.system_prompt)
     rubyllm_chat.ask("Create an itinerary for the following location: #{@trip.place.name} and date: #{@trip.date}")
   end
