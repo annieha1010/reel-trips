@@ -1,4 +1,4 @@
 <%= simple_form_for trip do |f| %>
-  <%= f.input :new_plan, label: "Make a change to the plan" %>
-  <%= f.submit 'Update plan', class: 'btn btn-info mt-2' %>
+  <%= f.input :new_plan, label: false, placeholder: "Describe a change to the plan…" %>
+  <%= f.submit 'Update plan', class: 'btn btn-info mt-1' %>
 <% end %>

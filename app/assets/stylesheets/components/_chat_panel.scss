@@ -1,0 +1,31 @@
+.trip-map {
+  height: 80vh;
+}
+
+@media (max-width: 767px) {
+  .trip-map {
+    height: 250px;
+  }
+
+  .chat-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 30vh;
+    overflow-y: auto;
+    background: white;
+    border-top: 1px solid #ddd;
+    padding: 12px;
+    transition: max-height 0.3s;
+    z-index: 1000;
+  }
+
+  .chat-panel:focus-within {
+    max-height: 50vh;
+  }
+
+  body {
+    padding-bottom: 30vh;
+  }
+}
