@@ -16,12 +16,10 @@
     </div>
   </div>
 </div>
-
 <div class="chat-panel" data-controller="chat-panel">
   <button type="button" class="chat-panel-bar" data-action="click->chat-panel#toggle">
     Make a change or ask a question
   </button>
-
   <div class="chat-panel-body">
     <div id="chat">
       <div id="messages">
@@ -33,8 +31,6 @@
         <%= render "messages/form" %>
       </div>
     </div>
-    <%= render "trips/new_plan_form", trip: @trip %>
   </div>
 </div>
-
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
