@@ -1,4 +1,4 @@
-<%= simple_form_for [@trip, @message] do |f| %>
+<%= simple_form_for [trip, message] do |f| %>
   <%= f.input :content, label: false, placeholder: "Ask about your trip…" %>
   <%= f.submit 'chat', class: 'btn btn-info mt-1' %>
 <% end %>

@@ -28,7 +28,7 @@
         <% end %>
       </div>
       <div id="new_message_container" class="message-form">
-        <%= render "messages/form" %>
+        <%= render "messages/form", trip: @trip, message: @message %>
       </div>
     </div>
   </div>
