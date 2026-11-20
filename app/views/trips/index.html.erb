@@ -8,7 +8,7 @@
         <%= image_tag (trip.image_url.presence || "no_photo.png"), alt: "trip.place.name", class: "card-img-top" %>
         <div class="card-trip-infos" >
           <div>
-            <h2 class="text"><%=  trip.place.name  %></h2>
+            <h2><%= trip.place.name %></h2>
             <p><%= trip.date %></p>
           </div>
           <%= image_tag trip.season_image, alt: "text" , class: "season-image"%>

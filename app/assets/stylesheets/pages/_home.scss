@@ -1,17 +1,15 @@
 // Specific CSS for your home-page
 .landing-hero {
-  background: #AEEED3;
+  background: $body-bg;
   display: flex;
   align-items: center;
   position: relative;
   padding: 25px;
-
 }
 
 .badge-tag {
   display: inline-block;
-  background-color: #cbe9e2;
-  color: #267363;
+  background-color: $light-gray;
   padding: 5px 10px;
   font-size: 12px;
 }
@@ -22,7 +20,7 @@
   color: darkblue
 
   span{
-    color: 526d67;
+    color: #526d67;
   }
 }
 
@@ -31,14 +29,41 @@
   color: white;
 }
 
-.btn {
-  background-color: #3da58e;
-  color: white;
-  padding: 10px 25px;
-  border-radius: 25px;
+.button {
+  /* Variables */
+  --button_radius: 0.75em;
+  --button_color: white;
+  --button_outline_color: #000000;
+  display: inline-block;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--button_radius);
+  background: var(--button_outline_color);
+
+  &:hover .button_top {
+    transform: translateY(-0.33em);
+  }
+
+  &:active .button_top {
+    transform: translateY(0);
+  }
 }
 
-.img-rounded{
+.button_top {
+  display: block;
+  text-decoration: none;
+  box-sizing: border-box;
+  border: 2px solid var(--button_outline_color);
+  border-radius: var(--button_radius);
+  padding: 0.75em 1.5em;
+  background: var(--button_color);
+  color: var(--button_outline_color);
+  transform: translateY(-0.2em);
+  transition: transform 0.1s ease;
+}
+
+.img-rounded {
   width: 100%;
   border-radius: 15px;
 }
