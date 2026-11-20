@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def create
-    @trip = Trip.find(params[:trip_id])
+    @trip = current_user.trips.find(params[:trip_id])
     @message = Message.new(message_params)
     @message.trip = @trip
     @message.role = "user"
