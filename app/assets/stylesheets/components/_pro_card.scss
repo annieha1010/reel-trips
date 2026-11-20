@@ -1,7 +1,6 @@
 // for the card in the home page
 .gradient-bg {
-  background: #9FBED9;
-  background: linear-gradient(90deg, rgba(159, 190, 217, 0.91) 13%, rgba(244, 239, 230, 0.94) 100%);
+  background: var(--home-card-bg);
   border-radius: 30px;
   align-items: center;
   padding: 30px;
@@ -15,4 +14,14 @@
   align-items: center;
   padding: 30px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+// for the plan response card
+.card {
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.bg-light {
+  background-color: var(--tag-bg) !important;
 }

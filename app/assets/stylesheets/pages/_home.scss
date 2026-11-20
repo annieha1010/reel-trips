@@ -1,15 +1,15 @@
 // Specific CSS for your home-page
 .landing-hero {
-  background: $body-bg;
   display: flex;
   align-items: center;
   position: relative;
   padding: 25px;
+  background-color: var(--bg)
 }
 
 .badge-tag {
   display: inline-block;
-  background-color: $light-gray;
+  background-color: var(--tag-bg);
   padding: 5px 10px;
   font-size: 12px;
 }
@@ -17,50 +17,11 @@
 .hero-title {
   font-size: 60px;
   font-weight: bold;
-  color: darkblue
-
-  span{
-    color: #526d67;
-  }
 }
 
 .hero-subtitle {
   font-size: 20px;
-  color: white;
-}
-
-.button {
-  /* Variables */
-  --button_radius: 0.75em;
-  --button_color: white;
-  --button_outline_color: #000000;
-  display: inline-block;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  border-radius: var(--button_radius);
-  background: var(--button_outline_color);
-
-  &:hover .button_top {
-    transform: translateY(-0.33em);
-  }
-
-  &:active .button_top {
-    transform: translateY(0);
-  }
-}
-
-.button_top {
-  display: block;
-  text-decoration: none;
-  box-sizing: border-box;
-  border: 2px solid var(--button_outline_color);
-  border-radius: var(--button_radius);
-  padding: 0.75em 1.5em;
-  background: var(--button_color);
-  color: var(--button_outline_color);
-  transform: translateY(-0.2em);
-  transition: transform 0.1s ease;
+  color: var(--white-black);
 }
 
 .img-rounded {
