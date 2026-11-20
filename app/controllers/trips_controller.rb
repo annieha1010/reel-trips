@@ -10,9 +10,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     @trip.user = current_user
 
-    if @trip.place_name.present?
-      @trip.place = Place.find_or_create_by(name: @trip.place_name.strip)
-    end
+    @trip.place = Place.find_or_create_by(name: @trip.place_name.strip) if @trip.place_name.present?
 
     url = "https://commons.wikimedia.org/w/index.php?search=#{@trip.place.name}&title=Special%3AMediaSearch&type=image"
 
@@ -26,9 +24,9 @@ class TripsController < ApplicationController
     @trip.image_url = @image_url
 
     if @trip.save
-       response = generate_plan
-       @trip.plan = response.content
-       @trip.save
+      response = generate_plan
+      @trip.plan = response.content
+      @trip.save
       redirect_to trip_path(@trip)
     else
       render "new", status: :unprocessable_entity
@@ -56,7 +54,11 @@ class TripsController < ApplicationController
   end
 
   def index
-    @trips = current_user.trips.where.not(place: nil)
+    if params.dig(:search, :query).present?
+      @trips = current_user.trips.joins(:place).search_by_place(params[:search][:query])
+    else
+      @trips = current_user.trips
+    end
   end
 
   def update

@@ -40,4 +40,12 @@ class Trip < ApplicationRecord
       "winter.png"
     end
   end
+
+  include PgSearch::Model
+
+  pg_search_scope :search_by_place,
+                  against: { place: [:name] },
+                  using: {
+                    tsearch: { prefix: true } # <-- now `superman batm` will return something!
+                  }
 end

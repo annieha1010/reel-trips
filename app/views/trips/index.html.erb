@@ -1,11 +1,15 @@
 <div class="container">
   <div class="header">
     <h1>Trips</h1>
+    <% simple_form_for :search, url: trips_path, method: :get do |f| %>
+      <%= f.input :query, as: :string, label: false, input_html: { value: params.dig(:search, :query), placeholder: "Search places..." } %>
+      <%= f.submit "Search", class: "btn btn-primary" %>
+    <% end %>
   </div>
   <div class="cards">
     <% @trips.each do |trip| %>
       <div class="card-trip">
-        <%= image_tag (trip.image_url.presence || "no_photo.png"), alt: "trip.place.name", class: "card-img-top" %>
+        <%= image_tag (trip.image_url.presence || "no_photo.png", alt: "trip.place.name", class: "card-img-top") %>
         <div class="card-trip-infos" >
           <div>
             <h2><%= trip.place.name %></h2>
