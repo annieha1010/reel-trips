@@ -27,4 +27,17 @@ class Trip < ApplicationRecord
     You take a date and a location and provide responses in markdown, structured as follows (one short paragraph per item):\n
     Information on the location, fish to be found, and equipment necessary. You take into account the unique factors of the location and season'."
   end
+
+  def season_image
+    case date&.month
+    when 3..5
+      "spring.png"
+    when 6..8
+      "summer.png"
+    when 9..11
+      "autumn.png"
+    else
+      "winter.png"
+    end
+  end
 end

@@ -6,11 +6,12 @@
     <% @trips.each do |trip| %>
       <div class="card-trip">
         <%= image_tag (trip.image_url.presence || "no_photo.png"), alt: "trip.place.name", class: "card-img-top" %>
-        <div class="card-trip-infos">
+        <div class="card-trip-infos" >
           <div>
             <h2><%= trip.place.name %></h2>
             <p><%= trip.date %></p>
           </div>
+          <%= image_tag trip.season_image, alt: "text" , class: "season-image"%>
         </div>
         <%= link_to "", trip_path(trip), class: "position-absolute top-0 bottom-0 w-100" %>
         <%= link_to trip_path(trip),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "position-absolute top-0 end-0 p-3 text-secondary" do %>
