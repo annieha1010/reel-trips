@@ -1,8 +1,8 @@
 class CreatePlaceTool < RubyLLM::Tool
   description "Use this tool when we are receiving place information from the request. If the place does not exist in the database, it creates a new one"
   parameter :name, description: "The name of the lake/river/body of water for fishing"
-  parameter :latitude, description: "The latitude of the lake/river/body of water for fishing. Preferably a specific and known fishing spot (e.g. 35.236500)"
-  parameter :longitude, description: "The longitude of the lake/river/body of water for fishing. Preferably a specific and known fishing spot (e.g. 138.997140)"
+  parameter :latitude, description: "The latitude of the lake/river/body of water for fishing (e.g. 35.236500)."
+  parameter :longitude, description: "The longitude of the lake/river/body of water for fishing (e.g. 138.997140)"
   parameter :trip_id, description: "This is the id provided from the prompt for the instance of a trip"
 
 
