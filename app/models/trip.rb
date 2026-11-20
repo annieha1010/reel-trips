@@ -44,8 +44,10 @@ class Trip < ApplicationRecord
   include PgSearch::Model
 
   pg_search_scope :search_by_place,
-                  against: { place: [:name] },
+                  associated_against: {
+                    place: [:name]
+                  },
                   using: {
-                    tsearch: { prefix: true } # <-- now `superman batm` will return something!
+                    tsearch: { prefix: true }
                   }
 end
