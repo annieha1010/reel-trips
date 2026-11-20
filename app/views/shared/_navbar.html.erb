@@ -11,6 +11,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
+          <li data-controller="theme" data-theme-value="<%= theme_class %>">
+            <i class="fa-solid fa-fish nav-icon" data-action="click->theme#toggle"></i>
+          </li>
           <li class="nav-item active">
             <%= link_to "My trips", trips_path, class: "nav-link" %>
           </li>

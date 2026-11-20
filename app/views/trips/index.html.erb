@@ -11,6 +11,12 @@
       <div class="card-trip">
         <%= image_tag (trip.image_url.presence || "no_photo.png"), alt: "trip.place.name", class: "card-img-top" %>
         <div class="card-trip-infos" >
+          <% status = trip_status_badge(trip) %>
+          <% if status %>
+            <span class="trip-status-badge">
+              <%= status %>
+            </span>
+          <% end %>
           <div>
             <h2><%= trip.place.name %></h2>
             <p><%= trip.date %></p>

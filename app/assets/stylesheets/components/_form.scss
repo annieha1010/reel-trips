@@ -1,17 +1,17 @@
 // overwriting tom select in the form input
 .ts-control {
   border: none;
-
 }
 
 .ts-wrapper.single .ts-control {
   background-image: none;
-  background-color: $light-gray;
+  background-color: var(--form-bg);
   box-shadow: none;
   color: black;
 }
 
 .form-select {
+  background-color: var(--form-bg);
   border-radius: 10px;
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
 }
@@ -21,7 +21,7 @@
 }
 
 .ts-control, .ts-wrapper.single.input-active .ts-control {
-  background-color: $light-gray;
+  background-color: var(--form-bg);
 }
 
 .ts-control, .ts-control input, .ts-dropdown {
@@ -29,7 +29,7 @@
 }
 
 .ts-wrapper.single.dropdown-active .ts-control:after {
-  border-color: transparent transparent $blue;
+  border-color: transparent transparent black;
 }
 
 .ts-wrapper.single .ts-control:not(.rtl):after {

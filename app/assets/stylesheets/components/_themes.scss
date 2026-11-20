@@ -1,0 +1,30 @@
+/* classic (default) */
+.classic {
+  --tag-bg: #F4EFE6;
+  --form-bg: #F4EFE6;
+  --nav-button: #9FBED9;
+  --nav-button-hover: #EFA792;
+  --white-black: white;
+  --black-white: black;
+  --nav-bg: #4D84B0;
+  --home-card-bg: #9FBED9;
+  --home-card-bg: linear-gradient(90deg, rgba(159, 190, 217, 0.91) 13%, rgba(244, 239, 230, 0.94) 100%);
+  --black-orange: black;
+}
+
+/* modern */
+.modern {
+  --bg: #EBF6F4;
+  --form-bg: #EBF6F4;
+  --home-card-bg: #134074;
+  --tag-bg: #9FBED9;
+  --white-black: black;
+  --black-white: white;
+  --nav-bg: #0B2545;
+  --nav-button-hover: #FF6B35;
+  --black-orange: #FF6B35;
+  --home-card-bg: #ffffff;
+  --home-card-bg: linear-gradient(270deg,rgba(255, 255, 255, 0.91) 5%, rgba(125, 207, 182, 0.94) 100%);
+    // for the plan response frame
+  --bs-body-bg: white;
+}
