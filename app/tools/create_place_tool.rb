@@ -13,7 +13,8 @@ class CreatePlaceTool < RubyLLM::Tool
     place.update(latitude: latitude, longitude: longitude)
     trip.place = place
     if trip.save
-      # tell the ai that we made a new challenge and provide the challenge info for the llm to create the final response
+      trip.generate_image_url
+      # tell the ai that we made a new trip and provide the trip info for the llm to create the final response
       { success: true, trip_id: trip.id}
     else
       # tell the ai what went wrong

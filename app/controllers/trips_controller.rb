@@ -10,16 +10,10 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     @trip.user = current_user
 
-    if @trip.place_name.present?
-      @trip.place = Place.find_or_create_by(name: @trip.place_name.strip)
-    end
-
-    @trip.image_url = generate_image_url
-
     if @trip.save
-       response = generate_plan
-       @trip.plan = response.content
-       @trip.save
+      response = generate_plan
+      @trip.plan = response.content
+      @trip.save
       redirect_to trip_path(@trip)
     else
       render "new", status: :unprocessable_entity
@@ -80,18 +74,6 @@ class TripsController < ApplicationController
     rubyllm_chat.with_tools(CreatePlaceTool)
     rubyllm_chat.with_instructions(Trip.system_prompt)
     rubyllm_chat.ask("User input: #{params[:trip][:place_name]}. This is the `trip_id`: #{@trip.id}. Once the CreatePlaceTool provides you a `place_id`, then Create an itinerary for that location and date: #{@trip.date}")
-  end
-
-  def generate_image_url
-    url = "https://commons.wikimedia.org/w/index.php?search=#{@trip.place.name}&title=Special%3AMediaSearch&type=image"
-
-    html_file = URI.parse(url).read
-    html_doc = Nokogiri::HTML.parse(html_file)
-    @link = html_doc.search(".sdms-image-result").attr("href")
-
-    link_file = URI.parse(@link).read
-    html_doc = Nokogiri::HTML.parse(link_file)
-    @image_url = html_doc.search("#file a img").attr("src")
   end
 
   def trip_params
