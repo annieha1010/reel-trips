@@ -40,9 +40,9 @@ class TripsController < ApplicationController
 
   def index
     if params.dig(:search, :query).present?
-      @trips = current_user.trips.search_by_place(params[:search][:query])
+      @trips = current_user.trips.where.not(place: nil).search_by_place(params[:search][:query])
     else
-      @trips = current_user.trips
+      @trips = current_user.trips.where.not(place: nil)
     end
   end
 
