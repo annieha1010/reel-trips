@@ -41,6 +41,15 @@ class Trip < ApplicationRecord
     end
   end
 
+  include PgSearch::Model
+
+  pg_search_scope :search_by_place,
+                  associated_against: {
+                    place: [:name]
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
   def generate_image_url
     # return if @trip.place.nil?
     url = "https://commons.wikimedia.org/w/index.php?search=#{place.name}&title=Special%3AMediaSearch&type=image"

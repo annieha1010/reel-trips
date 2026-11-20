@@ -81,3 +81,4 @@ gem "ruby_llm"
 
 # Render markdown: https://github.com/vmg/redcarpet
 gem "redcarpet"
+gem "pg_search"

@@ -39,7 +39,11 @@ class TripsController < ApplicationController
   end
 
   def index
-    @trips = current_user.trips.where.not(place: nil)
+    if params.dig(:search, :query).present?
+      @trips = current_user.trips.search_by_place(params[:search][:query])
+    else
+      @trips = current_user.trips
+    end
   end
 
   def update
