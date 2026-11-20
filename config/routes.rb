@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
+  # resource :theme, only: [ :update ]
+  patch '/themes/:theme', to: 'themes#update', as: :theme
 end

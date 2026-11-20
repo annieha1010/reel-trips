@@ -1,4 +1,8 @@
 <%= simple_form_for [trip, message] do |f| %>
-  <%= f.input :content, label: false, placeholder: "Ask about your trip…" %>
-  <%= f.submit 'chat', class: 'btn btn-info mt-1' %>
+  <div class="d-flex align-items-center">
+    <%= f.input :content, as: :string, label: false, placeholder: "Ask about your trip…", wrapper_html: {class: "w-100", style: "margin-bottom:0 !important"}%>
+    <div class="button">
+      <%= f.submit 'chat', class: 'button_top' %>
+    </div>
+  </div>
 <% end %>
