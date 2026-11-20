@@ -6,6 +6,14 @@
   position: relative;
 }
 
+.trip-status-badge{
+  position: absolute;
+  bottom: 233px;
+  background-color: #9FBED9;
+  padding: 3px 8px;
+  border-radius: 25px;
+}
+
 .card-trip > img {
   height: 200px;
   width: 100%;
