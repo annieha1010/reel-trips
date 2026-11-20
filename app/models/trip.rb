@@ -40,4 +40,18 @@ class Trip < ApplicationRecord
       "winter.png"
     end
   end
+
+  def generate_image_url
+    # return if @trip.place.nil?
+    url = "https://commons.wikimedia.org/w/index.php?search=#{place.name}&title=Special%3AMediaSearch&type=image"
+
+    html_file = URI.parse(url).read
+    html_doc = Nokogiri::HTML.parse(html_file)
+    link = html_doc.search(".sdms-image-result").attr("href")
+
+    link_file = URI.parse(link).read
+    html_doc = Nokogiri::HTML.parse(link_file)
+    self.image_url = html_doc.search("#file a img").attr("src")
+    save
+  end
 end
